@@ -28,3 +28,9 @@ Install `nltk` using `pip`
 ### NLP
 
 [NLP toolkit](http://www.nltk.org/)
+
+## Topic and sentiment analysis
+
+[Stanford final paper from some students](http://cs229.stanford.edu/proj2013/AtwooddeLascurainSmith-ClassifyingNewsforTopicandSentiment.pdf)
+
+
