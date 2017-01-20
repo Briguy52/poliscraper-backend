@@ -17,7 +17,6 @@ class BBCSpider(XMLFeedSpider):
     def parse_node(self, response, node):
         self.logger.info('Hi, this is a <%s> node!: %s', self.itertag, ''.join(node.extract()))
 
-        item = BbcCrawlerItem()
         url = node.xpath('link/text()').extract()
         yield scrapy.Request(url[0], callback=self.parse_news)
 
@@ -25,8 +24,10 @@ class BBCSpider(XMLFeedSpider):
         soup = BeautifulSoup(response.text, 'html.parser')
         words = ["United States", "in US", "by US", "the US", "Trump", "Donald Trump", "Mike Pence", "Inauguration", "inauguration"]
         div_main = soup.find('div', class_="story-body")
+        item = BbcCrawlerItem()
         for word in words:
             if word in div_main.get_text():
-                print(response.url + " hahaha")
+                item['link']= response.url
+                return item
                 break
 
